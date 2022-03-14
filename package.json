@@ -11,7 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/studioVMdev/instock-waterloo-server.git"
   },
-  "keywords": ["node", "express", "mvc", "routes"],
+  "keywords": [
+    "node",
+    "express",
+    "mvc",
+    "routes"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
