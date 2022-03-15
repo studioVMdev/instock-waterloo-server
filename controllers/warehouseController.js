@@ -5,13 +5,18 @@ const getWarehousesList = (_req, res) => {
   return res.status(200).json(warehouseModel.getWarehousesList());
 };
 
-//J2W-11
+// TODO: J2W-11
 const getWarehouseById = (req, res) => {
-  const warehousesList = warehouseModel.getWarehousesList();
-  const selectedWarehouse = warehousesList.find(
-    (warehouse) => warehouse.id == req.params.warehouseId
-  );
-  return res.status(200).json(selectedWarehouse);
+  const warehouseId = req.params.warehouseId;
+
+  const found = warehouseModel.findById(warehouseId);
+  if (found) {
+    return res.status(200).json(warehouseModel.getWarehouseById(warehouseId));
+  } else {
+    return res.status(404).json({
+      errorMessage: `Warehouse with ID:${warehouseId} does not exist`,
+    });
+  }
 };
 
 module.exports = {
