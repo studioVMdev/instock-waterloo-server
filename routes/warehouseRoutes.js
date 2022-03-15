@@ -13,6 +13,7 @@ router.get("/", warehouseController.getWarehousesList);
 //GET("/:wId")
 // TaskBack-End: API to GET a Single Warehouse
 // J2W-11Medium-
+router.get("/:warehouseId", warehouseController.getWarehouseById);
 
 //POST("/")
 // TaskBack-End: API to POST/CREATE a New Warehouse
