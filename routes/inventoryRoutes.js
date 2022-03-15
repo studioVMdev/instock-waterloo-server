@@ -1,10 +1,14 @@
-//(/inventory)
+const router = require("express").Router();
+
+const inventoryController = require("../controllers/inventoryController");
 
 //! SORT WILL HAPPEN on GET route using params e.g.
 // /inventory ? sort_cat=category & sort=asc
+
 //GET("/")
 // TaskBack-End: API to GET List of all Inventory Items
 // J2W-21Medium-
+router.get("/", inventoryController.getInventoryList);
 
 //GET("/:iId")
 // TaskBack-End: API to GET a Single Inventory Item
@@ -25,3 +29,5 @@
 //DELETE("/:iId")
 // TaskBack-End: API to DELETE an Inventory Item
 // J2W-26
+
+module.exports = router;

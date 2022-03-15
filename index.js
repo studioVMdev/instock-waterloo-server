@@ -16,9 +16,10 @@ app.get("/", (_req, res) => res.send("hello world"));
 //! Routes
 const warehouseRoutes = require("./routes/warehouseRoutes");
 app.use("/warehouse", warehouseRoutes);
-// const inventoryRoutes = require("./routes/inventoryRoutes");
-// app.use("/inventory", inventoryRoutes);
+
+const inventoryRoutes = require("./routes/inventoryRoutes");
+app.use("/inventory", inventoryRoutes);
 
 app.listen(process.env.PORT || 8080, () => {
-	console.log("listening on port " + (process.env.PORT || 8080));
+  console.log("listening on port " + (process.env.PORT || 8080));
 });
