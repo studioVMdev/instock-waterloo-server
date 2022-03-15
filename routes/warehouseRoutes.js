@@ -2,7 +2,6 @@ const router = require("express").Router();
 
 const warehouseController = require("../controllers/warehouseController");
 
-
 //! SORT WILL HAPPEN on GET route using params e.g.
 // /warehouse ? sort_cat=category & sort=asc
 
@@ -10,7 +9,6 @@ const warehouseController = require("../controllers/warehouseController");
 // TaskBack-End: API to GET List of All Warehouses
 // J2W-10Medium-
 router.get("/", warehouseController.getWarehousesList);
-
 
 //GET("/:wId")
 // TaskBack-End: API to GET a Single Warehouse
