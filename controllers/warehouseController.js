@@ -25,10 +25,11 @@ const deleteWarehouse = (req, res) => {
   const warehouseId = req.params.warehouseId;
   let warehouses = warehouseModel.getWarehousesList();
   //delete selected warehouse here
-  let warehouse = getWarehouseById(warehouseId);
-  // if (warehouse === false){
+  if (!warehouseModel.getWarehouseById(warehouseId)) {
+    res.status(400).json("FAILED");
+  }
+  let warehouse = warehouseModel.getWarehouseById(warehouseId);
 
-  // }
   let warehousesList = warehouses.filter((warehouse) => {
     if (warehouse.id !== warehouseId) {
       return warehouse;
