@@ -17,12 +17,18 @@ class Warehouse {
   };
 
   // TODO: J2W-11
-  static findById = (warehouseId) => {
-    return warehouseList.some((warehouse) => warehouse.id === warehouseId);
-  };
+  // static findById = (warehouseId) => {
+  //   return warehouseList.some((warehouse) => warehouse.id === warehouseId);
+  // };
 
   static getWarehouseById = (warehouseId) => {
     return warehouseList.find((warehouse) => warehouse.id === warehouseId);
+  };
+
+  //J2W-15
+  static updateWarehouse = (updateWarehouseList) => {
+    //Warehouse list updated with given data
+    writeFile(warehouseJSONPath, updateWarehouseList);
   };
 }
 
