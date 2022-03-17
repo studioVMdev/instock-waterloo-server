@@ -20,6 +20,7 @@ const getWarehouseById = (req, res) => {
   }
 };
 
+//J2W-15
 const deleteWarehouse = (req, res) => {
   const warehouseId = req.params.warehouseId;
   let warehouses = warehouseModel.getWarehousesList();
@@ -31,9 +32,11 @@ const deleteWarehouse = (req, res) => {
   });
   warehouseModel.updateWarehouse(warehousesList);
 
-  //delete inventory corresponding to
-  if (req.query.option === "full") {
-    //delete inv here!!
+  //delete inventory corresponding to warehouseID
+
+  if (req.query.fulldelete !== "no") {
+    //this code does not run if the query parameter is no
+    //by default it will delete the inventory with the warehouse
     let inventoryList = inventoryModel.getInventoryList();
     let inventoryUpdatedList = inventoryList.filter((inventory) => {
       if (inventory.warehouseID !== warehouseId) {
