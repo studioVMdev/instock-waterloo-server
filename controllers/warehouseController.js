@@ -25,7 +25,11 @@ const getWarehouseById = (req, res) => {
 const addWarehouse = (req, res) => {
   let result = isError("warehouse", req.body);
   if (!result) {
-    res.status(200).json(req.body);
+    let data = { id: uuidv4(), ...req.body };
+    let warehouses = warehouseModel.getWarehousesList();
+    warehouses.splice(0, 0, data);
+    warehouseModel.updateWarehouse(warehouses);
+    res.status(200).json(data);
   } else {
     res.status(400).json(result);
   }
