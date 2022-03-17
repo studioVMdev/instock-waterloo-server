@@ -26,7 +26,7 @@ const deleteWarehouse = (req, res) => {
   let warehouses = warehouseModel.getWarehousesList();
   //delete selected warehouse here
   if (!warehouseModel.getWarehouseById(warehouseId)) {
-    res.status(400).json("FAILED");
+    return res.status(400).json(`warehouse with id ${warehouseId} not found`);
   }
   let warehouse = warehouseModel.getWarehouseById(warehouseId);
 
