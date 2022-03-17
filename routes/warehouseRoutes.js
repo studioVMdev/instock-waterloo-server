@@ -26,11 +26,10 @@ router.get("/:warehouseId", warehouseController.getWarehouseById);
 //DELETE("/:wId")
 // TaskBack-End: API to DELETE a Warehouse
 // J2W-15Medium
+//use route with query paramter ?option=full to delete inventory
+//example: /delete/:warehouseId?option=full
 router.get("/delete/:warehouseId", warehouseController.deleteWarehouse);
 
 //Use the route below if the inventory list has to also be deleted alongside warehouse
-// router.get(
-//   "/delete/:warehouseId?option=",
-//   warehouseController.deleteWarehouseFull
-// );
+
 module.exports = router;
