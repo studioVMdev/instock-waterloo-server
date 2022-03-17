@@ -1,6 +1,6 @@
 const warehouseModel = require("../models/warehouseModel");
 const inventoryModel = require("../models/inventoryModel");
-const { isValid } = require("../utils/helpers");
+const { isError } = require("../utils/helpers");
 const { v4: uuidv4 } = require("uuid");
 
 const getWarehousesList = (_req, res) => {
@@ -23,9 +23,11 @@ const getWarehouseById = (req, res) => {
 
 //J2W-12
 const addWarehouse = (req, res) => {
-  let validity = isValid("warehouse", req.body);
-  if (validity || !validity) {
-    return res.status(200).json(validity);
+  let result = isError("warehouse", req.body);
+  if (!result) {
+    res.status(200).json(req.body);
+  } else {
+    res.status(400).json(result);
   }
 };
 

@@ -20,9 +20,9 @@ const writeFile = (path, data) => {
 };
 
 //validation function to check whether post requests are valid
-const isValid = (type, data) => {
+const isError = (type, data) => {
   let options;
-  let isError = true;
+  let isError = false;
   if (type === "warehouse") {
     options = ["name", "address", "city", "country", "contact"];
     additionalInfo = ["name", "position", "phone", "email"];
@@ -49,7 +49,7 @@ const isValid = (type, data) => {
       }
     }
   }
-  return data;
+  return isError;
 };
 
-module.exports = { readFile, writeFile, isValid };
+module.exports = { readFile, writeFile, isError };
