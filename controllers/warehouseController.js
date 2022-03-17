@@ -25,6 +25,10 @@ const deleteWarehouse = (req, res) => {
   const warehouseId = req.params.warehouseId;
   let warehouses = warehouseModel.getWarehousesList();
   //delete selected warehouse here
+  let warehouse = getWarehouseById(warehouseId);
+  // if (warehouse === false){
+
+  // }
   let warehousesList = warehouses.filter((warehouse) => {
     if (warehouse.id !== warehouseId) {
       return warehouse;
@@ -44,10 +48,10 @@ const deleteWarehouse = (req, res) => {
       }
     });
     inventoryModel.updateInventory(inventoryUpdatedList);
-    return res.status(200).json(inventoryUpdatedList);
+    return res.status(200).json(warehouse);
   }
 
-  return res.status(200).json(warehousesList);
+  return res.status(200).json(warehouse);
 };
 
 module.exports = {

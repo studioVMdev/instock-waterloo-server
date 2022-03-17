@@ -27,7 +27,7 @@ class Warehouse {
 
   //J2W-15
   static updateWarehouse = (updateWarehouseList) => {
-    //Inventory list updated with given data
+    //Warehouse list updated with given data
     writeFile(warehouseJSONPath, updateWarehouseList);
   };
 }
