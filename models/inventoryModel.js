@@ -15,6 +15,10 @@ class Inventory {
     console.log("inventory model");
     return inventoryList;
   };
+  static updateInventory = (updateInventoryList) => {
+    //Inventory list updated with given data
+    writeFile(inventoryJSONPath, updateInventoryList);
+  };
 }
 
 module.exports = Inventory;

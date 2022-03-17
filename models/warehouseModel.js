@@ -24,6 +24,12 @@ class Warehouse {
   static getWarehouseById = (warehouseId) => {
     return warehouseList.find((warehouse) => warehouse.id === warehouseId);
   };
+
+  //J2W-15
+  static updateWarehouse = (updateWarehouseList) => {
+    //Inventory list updated with given data
+    writeFile(warehouseJSONPath, updateWarehouseList);
+  };
 }
 
 module.exports = Warehouse;

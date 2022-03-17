@@ -1,4 +1,5 @@
 const warehouseModel = require("../models/warehouseModel");
+const inventoryModel = require("../models/inventoryModel");
 const { v4: uuidv4 } = require("uuid");
 
 const getWarehousesList = (_req, res) => {
@@ -19,7 +20,35 @@ const getWarehouseById = (req, res) => {
   }
 };
 
+const deleteWarehouse = (req, res) => {
+  const warehouseId = req.params.warehouseId;
+  let warehouses = warehouseModel.getWarehousesList();
+  //delete selected warehouse here
+  let warehousesList = warehouses.filter((warehouse) => {
+    if (warehouse.id !== warehouseId) {
+      return warehouse;
+    }
+  });
+  warehouseModel.updateWarehouse(warehousesList);
+
+  //delete inventory corresponding to
+  if (req.query.option === "full") {
+    //delete inv here!!
+    let inventoryList = inventoryModel.getInventoryList();
+    let inventoryUpdatedList = inventoryList.filter((inventory) => {
+      if (inventory.warehouseID !== warehouseId) {
+        return inventory;
+      }
+    });
+    inventoryModel.updateInventory(inventoryUpdatedList);
+    return res.status(200).json(inventoryUpdatedList);
+  }
+
+  return res.status(200).json(warehousesList);
+};
+
 module.exports = {
   getWarehousesList,
   getWarehouseById,
+  deleteWarehouse,
 };
