@@ -1,5 +1,6 @@
 const warehouseModel = require("../models/warehouseModel");
 const inventoryModel = require("../models/inventoryModel");
+const { isError } = require("../utils/helpers");
 const { v4: uuidv4 } = require("uuid");
 
 const getWarehousesList = (_req, res) => {
@@ -17,6 +18,20 @@ const getWarehouseById = (req, res) => {
     return res.status(404).json({
       errorMessage: `Warehouse with ID:${warehouseId} does not exist`,
     });
+  }
+};
+
+//J2W-12
+const addWarehouse = (req, res) => {
+  let result = isError("warehouse", req.body);
+  if (!result) {
+    let data = { id: uuidv4(), ...req.body };
+    let warehouses = warehouseModel.getWarehousesList();
+    warehouses.splice(0, 0, data);
+    warehouseModel.updateWarehouse(warehouses);
+    res.status(200).json(data);
+  } else {
+    res.status(400).json(result);
   }
 };
 
@@ -59,4 +74,5 @@ module.exports = {
   getWarehousesList,
   getWarehouseById,
   deleteWarehouse,
+  addWarehouse,
 };
