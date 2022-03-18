@@ -6,6 +6,21 @@ const getInventoryList = (_req, res) => {
   return res.status(200).json(inventoryModel.getInventoryList());
 };
 
+//J2W-22
+const getInventoryById = (req, res) => {
+  const inventoryId = req.params.inventoryId;
+
+  const found = inventoryModel.findById(inventoryId);
+  if (found) {
+    return res.status(200).json(inventoryModel.getInventoryById(inventoryId));
+  } else {
+    return res.status(404).json({
+      errorMessage: `Inventory with ID:${inventoryId} does not exist`,
+    });
+  }
+};
+
 module.exports = {
   getInventoryList,
+  getInventoryById,
 };
