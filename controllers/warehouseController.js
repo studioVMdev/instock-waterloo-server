@@ -7,7 +7,7 @@ const getWarehousesList = (_req, res) => {
   return res.status(200).json(warehouseModel.getWarehousesList());
 };
 
-// TODO: J2W-11
+//J2W-11
 const getWarehouseById = (req, res) => {
   const warehouseId = req.params.warehouseId;
 
@@ -37,6 +37,7 @@ const addWarehouse = (req, res) => {
 
 //J2W-15
 const deleteWarehouse = (req, res) => {
+  console.log("deleted");
   const warehouseId = req.params.warehouseId;
   let warehouses = warehouseModel.getWarehousesList();
   //delete selected warehouse here

@@ -12,8 +12,8 @@ router.get("/", inventoryController.getInventoryList);
 
 //GET("/:iId")
 // TaskBack-End: API to GET a Single Inventory Item
-// J2W-22Medium-
-
+//TODO: J2W-22Medium-
+router.get("/:inventoryId", inventoryController.getInventoryById);
 //GET("/warehouse/:wId")
 // TaskBack-End: API to GET Inventories for a Given Warehouse
 // J2W-23Medium-

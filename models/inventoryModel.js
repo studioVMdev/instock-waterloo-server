@@ -19,6 +19,15 @@ class Inventory {
     //Inventory list updated with given data
     writeFile(inventoryJSONPath, updateInventoryList);
   };
+
+  //J2W-22
+  static findById = (inventoryId) => {
+    return inventoryList.some((inventory) => inventory.id === inventoryId);
+  };
+  //J2W-22
+  static getInventoryById = (inventoryId) => {
+    return inventoryList.find((inventory) => inventory.id === inventoryId);
+  };
 }
 
 module.exports = Inventory;

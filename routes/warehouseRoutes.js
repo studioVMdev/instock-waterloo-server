@@ -31,7 +31,7 @@ router.post("/add", warehouseController.addWarehouse);
 // J2W-15Medium
 //use route with query paramter ?fulldelete=no to just the warehouse and not inventory
 //example: /delete/:warehouseId?fulldelete=no
-router.delete("/delete/:warehouseId", warehouseController.deleteWarehouse);
+router.delete("/:warehouseId", warehouseController.deleteWarehouse);
 
 //Use the route below if the inventory list has to also be deleted alongside warehouse
 
