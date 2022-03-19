@@ -15,6 +15,8 @@ class Inventory {
     console.log("inventory model");
     return inventoryList;
   };
+
+  //J2W-25
   static updateInventory = (updateInventoryList) => {
     //Inventory list updated with given data
     writeFile(inventoryJSONPath, updateInventoryList);
