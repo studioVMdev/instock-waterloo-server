@@ -1,4 +1,5 @@
 const inventoryModel = require("../models/inventoryModel");
+const { isError } = require("../utils/helpers");
 const { v4: uuidv4 } = require("uuid");
 
 const getInventoryList = (_req, res) => {
@@ -39,18 +40,21 @@ const getInventoryByWarehouse = (req, res) => {
 };
 
 //TODO: J2W-24
-// const addInventoryItem = (req, res) => {
-//   let result = isError("inventory", req.body);
-//   if (!result) {
-//     let data = { id: uuidv4(), ...req.body };
-//     let warehouses = warehouseModel.getWarehousesList();
-//     warehouses.splice(0, 0, data);
-//     warehouseModel.updateWarehouse(warehouses);
-//     res.status(200).json(data);
-//   } else {
-//     res.status(400).json(result);
-//   }
-// };
+const addInventoryItem = (req, res) => {
+  console.log(req.body);
+  console.log("hello", req);
+  let result = isError("inventory", req.body);
+
+  if (!result) {
+    let data = { id: uuidv4(), ...req.body };
+    let inventoryList = inventoryModel.getInventoryList();
+    inventoryList.splice(0, 0, data);
+    inventoryModel.updateInventory(inventoryList);
+    res.status(200).json(data);
+  } else {
+    res.status(400).json(result);
+  }
+};
 
 //J2W-26
 const deleteInventory = (req, res) => {
@@ -78,4 +82,5 @@ module.exports = {
   getInventoryById,
   getInventoryByWarehouse,
   deleteInventory,
+  addInventoryItem,
 };
