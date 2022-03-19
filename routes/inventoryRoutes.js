@@ -33,5 +33,6 @@ router.get(
 //DELETE("/:iId")
 // TaskBack-End: API to DELETE an Inventory Item
 // J2W-26
+router.delete("/:inventoryId", inventoryController.deleteInventory);
 
 module.exports = router;

@@ -38,8 +38,31 @@ const getInventoryByWarehouse = (req, res) => {
   res.status(200).json(filteredInventoryList);
 };
 
+//J2W-26
+const deleteInventory = (req, res) => {
+  const inventoryId = req.params.inventoryId;
+  const inventoryList = inventoryModel.getInventoryList();
+  let inventory = inventoryModel.getInventoryById(inventoryId);
+  if (!inventory) {
+    return res
+      .status(400)
+      .json(`Inventory item with id ${inventoryId} not found`);
+  }
+  // let inventory = inventoryModel.getInventoryById(inventoryId);
+
+  let inventoryListUpdated = inventoryList.filter((item) => {
+    if (item.id !== inventoryId) {
+      return item;
+    }
+  });
+  inventoryModel.updateInventory(inventoryListUpdated);
+
+  return res.status(200).json(inventory);
+};
+
 module.exports = {
   getInventoryList,
   getInventoryById,
   getInventoryByWarehouse,
+  deleteInventory,
 };
