@@ -56,7 +56,6 @@ const deleteInventory = (req, res) => {
     }
   });
   inventoryModel.updateInventory(inventoryListUpdated);
-
   return res.status(200).json(inventory);
 };
 
