@@ -35,20 +35,38 @@ const addWarehouse = (req, res) => {
   }
 };
 
-//TODO: J2W-14
-// const editWarehouse = (req, res) => {
-//   let warehouseDetails = isError("warehouse details", req.body);
+//J2W-14
+const editWarehouse = (req, res) => {
+  // console.log(req.body);
+  let result = isError("warehouse", req.body);
 
-//   if (!warehouseDetails) {
-//     const warehouseId = req.params.warehouseId;
-//     let data = { warehouseId, ...req.body };
-//     let warehouse = warehouseModel.getWarehouseById(warehouseId);
-//     warehouseModel.updateWarehouseDetails(warehouse);
-//     res.status(200).json(data);
-//   } else {
-//     res.status(400).json(warehouseDetails);
-//   }
-// };
+  if (!result) {
+    const warehouseId = req.params.warehouseId;
+    // console.log(warehouseId);
+    let warehouses = warehouseModel.getWarehousesList();
+    // console.log(warehouses);
+
+    warehouses = warehouses.map((warehouse) => {
+      if (warehouse.id === warehouseId) {
+        console.log("found", warehouse);
+        warehouse = { id: warehouse.id, ...req.body };
+        console.log(warehouse);
+        return warehouse;
+      }
+      return warehouse;
+    });
+
+    let warehouseToEdit = warehouses.find(
+      (warehouse) => warehouse.id === warehouseId
+    );
+
+    warehouseModel.updateWarehouse(warehouses);
+
+    res.status(200).json(warehouseToEdit);
+  } else {
+    res.status(400).json(result);
+  }
+};
 
 //J2W-15
 const deleteWarehouse = (req, res) => {

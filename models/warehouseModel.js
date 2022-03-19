@@ -26,17 +26,12 @@ class Warehouse {
   };
 
   //J2W-12
+  //J2W-14
   //J2W-15
   static updateWarehouse = (updateWarehouseList) => {
     //Warehouse list updated with given data
     writeFile(warehouseJSONPath, updateWarehouseList);
   };
-
-  //TODO:J2W-14
-  // static updateWarehouseDetails = (updateSingleWarehouseDetails) => {
-  //   //Single warehouse details updated with given data
-  //   writeFile(warehouseJSONPath, updateWarehouseItemDetails);
-  // };
 }
 
 module.exports = Warehouse;
