@@ -52,4 +52,44 @@ const isError = (type, data) => {
   return isError;
 };
 
+//validation function to check whether post requests are valid
+// const isErrorI = (type, data) => {
+//   let options;
+//   let isErrorI = false;
+//   if (type === "inventory") {
+//     options = [
+//       "itemName",
+//       "description",
+//       "category",
+//       "status",
+//       "quantity",
+//       "warehouseName",
+//     ];
+//   }
+//   // else if (type === "inventory") {
+//   //   options = [];
+//   // }
+
+//   for (i = 0; i < options.length; i++) {
+//     option = options[i];
+//     if (!data[option]) {
+//       //if any of the standard info missing error msg here
+//       isErrorI = `Information missing: ${option}`;
+//       return isErrorI;
+//     }
+//     // if (typeof data[option] === "object") {
+//     //   for (i = 0; i < additionalInfo.length; i++) {
+//     //     let e = additionalInfo[i];
+//     //     // return e;
+//     //     if (!data[option][e]) {
+//     //       //If any contact info missing error message here
+//     //       isErrorI = `Information missing: Contact ${e}`;
+//     //       return isErrorI;
+//     //     }
+//     //   }
+//     // }
+//   }
+//   return isErrorI;
+// };
+
 module.exports = { readFile, writeFile, isError };

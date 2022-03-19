@@ -38,8 +38,23 @@ const getInventoryByWarehouse = (req, res) => {
   res.status(200).json(filteredInventoryList);
 };
 
+//TODO: J2W-24
+// const addInventoryItem = (req, res) => {
+//   let result = isError("inventory", req.body);
+//   if (!result) {
+//     let data = { id: uuidv4(), ...req.body };
+//     let warehouses = warehouseModel.getWarehousesList();
+//     warehouses.splice(0, 0, data);
+//     warehouseModel.updateWarehouse(warehouses);
+//     res.status(200).json(data);
+//   } else {
+//     res.status(400).json(result);
+//   }
+// };
+
 module.exports = {
   getInventoryList,
   getInventoryById,
   getInventoryByWarehouse,
+  // addInventoryItem,
 };

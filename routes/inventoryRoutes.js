@@ -12,7 +12,7 @@ router.get("/", inventoryController.getInventoryList);
 
 //GET("/:iId")
 // TaskBack-End: API to GET a Single Inventory Item
-//TODO: J2W-22Medium-
+//J2W-22Medium-
 router.get("/:inventoryId", inventoryController.getInventoryById);
 //GET("/warehouse/:wId")
 // TaskBack-End: API to GET Inventories for a Given Warehouse
@@ -24,7 +24,8 @@ router.get(
 
 //POST("/")
 // TaskBack-End: API to POST/CREATE a New Inventory Item
-// J2W-24Medium-
+//TODO: J2W-24Medium-
+// router.post("/add", inventoryController.addInventoryItem);
 
 //POST("/:iId")
 // TaskBack-End: API to PUT/PATCH/EDIT an Inventory Item
