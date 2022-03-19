@@ -35,6 +35,39 @@ const addWarehouse = (req, res) => {
   }
 };
 
+//J2W-14
+const editWarehouse = (req, res) => {
+  // console.log(req.body);
+  let result = isError("warehouse", req.body);
+
+  if (!result) {
+    const warehouseId = req.params.warehouseId;
+    // console.log(warehouseId);
+    let warehouses = warehouseModel.getWarehousesList();
+    // console.log(warehouses);
+
+    warehouses = warehouses.map((warehouse) => {
+      if (warehouse.id === warehouseId) {
+        console.log("found", warehouse);
+        warehouse = { id: warehouse.id, ...req.body };
+        console.log(warehouse);
+        return warehouse;
+      }
+      return warehouse;
+    });
+
+    let warehouseToEdit = warehouses.find(
+      (warehouse) => warehouse.id === warehouseId
+    );
+
+    warehouseModel.updateWarehouse(warehouses);
+
+    res.status(200).json(warehouseToEdit);
+  } else {
+    res.status(400).json(result);
+  }
+};
+
 //J2W-15
 const deleteWarehouse = (req, res) => {
   console.log("deleted");
@@ -76,4 +109,5 @@ module.exports = {
   getWarehouseById,
   deleteWarehouse,
   addWarehouse,
+  editWarehouse,
 };

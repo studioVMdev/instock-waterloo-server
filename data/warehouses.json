@@ -1,18 +1,5 @@
 [
   {
-    "id": "150a36cf-f38e-4f59-8e31-39974207372d0000",
-    "name": "Alif",
-    "address": "215 Essex Street",
-    "city": "Boston",
-    "country": "USA",
-    "contact": {
-      "name": "Alif",
-      "position": "Warehouse Manager",
-      "phone": "+1 (646) 123-1234",
-      "email": "vmendoza@instock.com"
-    }
-  },
-  {
     "id": "2922c286-16cd-4d43-ab98-c79f698aeab0",
     "name": "Manhattan",
     "address": "503 Broadway",

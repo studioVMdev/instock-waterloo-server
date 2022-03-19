@@ -25,6 +25,7 @@ router.post("/add", warehouseController.addWarehouse);
 //PATCH("/:wId")
 // TaskBack-End: API to PUT/PATCH/EDIT a Warehouse
 // J2W-14Medium-
+router.put("/:warehouseId", warehouseController.editWarehouse);
 
 //DELETE("/:wId")
 // TaskBack-End: API to DELETE a Warehouse

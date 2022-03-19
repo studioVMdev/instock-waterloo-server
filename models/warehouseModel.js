@@ -26,6 +26,7 @@ class Warehouse {
   };
 
   //J2W-12
+  //J2W-14
   //J2W-15
   static updateWarehouse = (updateWarehouseList) => {
     //Warehouse list updated with given data
