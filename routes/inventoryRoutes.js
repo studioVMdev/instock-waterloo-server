@@ -17,6 +17,10 @@ router.get("/:inventoryId", inventoryController.getInventoryById);
 //GET("/warehouse/:wId")
 // TaskBack-End: API to GET Inventories for a Given Warehouse
 // J2W-23Medium-
+router.get(
+  "/bywarehouse/:warehouseId",
+  inventoryController.getInventoryByWarehouse
+);
 
 //POST("/")
 // TaskBack-End: API to POST/CREATE a New Inventory Item

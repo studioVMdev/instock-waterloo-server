@@ -20,7 +20,20 @@ const getInventoryById = (req, res) => {
   }
 };
 
+//J2W-23
+const getInventoryByWarehouse = (req, res) => {
+  const warehouseId = req.params.warehouseId;
+  const inventoryList = inventoryModel.getInventoryList();
+  const filteredInventoryList = inventoryList.filter((inventory) => {
+    if (inventory.warehouseID === warehouseId) {
+      return inventory;
+    }
+  });
+  res.status(400).json(filteredInventoryList);
+};
+
 module.exports = {
   getInventoryList,
   getInventoryById,
+  getInventoryByWarehouse,
 };
