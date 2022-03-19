@@ -16,7 +16,7 @@ class Inventory {
     return inventoryList;
   };
 
-  //TODO: J2W-24
+  //J2W-24
   static updateInventory = (updateInventoryList) => {
     //Inventory list updated with given data
     writeFile(inventoryJSONPath, updateInventoryList);

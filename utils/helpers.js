@@ -19,7 +19,7 @@ const writeFile = (path, data) => {
   }
 };
 
-//validation function to check whether post requests for warehouse are valid
+//validation function to check whether post requests are valid
 const isError = (type, data) => {
   let options;
   let isError = false;
@@ -58,27 +58,5 @@ const isError = (type, data) => {
   }
   return isError;
 };
-
-//TODO: J2W-24
-// validation function to check whether post requests for inventory are valid
-// const isErrorI = (type, data) => {
-//   let options;
-//   let isErrorI = false;
-//   if (type === "inventory") {
-//     options = [
-
-//     ];
-//   }
-
-//   for (i = 0; i < options.length; i++) {
-//     option = options[i];
-//     if (!data[option]) {
-//       //if any of the standard info missing error msg here
-//       isErrorI = `Information missing: ${option}`;
-//       return isErrorI;
-//     }
-//   }
-//   return isErrorI;
-// };
 
 module.exports = { readFile, writeFile, isError };

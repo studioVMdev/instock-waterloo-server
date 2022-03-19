@@ -39,10 +39,8 @@ const getInventoryByWarehouse = (req, res) => {
   res.status(200).json(filteredInventoryList);
 };
 
-//TODO: J2W-24
+//J2W-24
 const addInventoryItem = (req, res) => {
-  console.log(req.body);
-  console.log("hello", req);
   let result = isError("inventory", req.body);
 
   if (!result) {
