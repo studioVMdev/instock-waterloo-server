@@ -29,7 +29,13 @@ const getInventoryByWarehouse = (req, res) => {
       return inventory;
     }
   });
-  res.status(400).json(filteredInventoryList);
+  if (filteredInventoryList.length === 0) {
+    //error handling if no inv found
+    return res
+      .status(404)
+      .json(`Could not find inventory for warehouse with ID: ${warehouseId}`);
+  }
+  res.status(200).json(filteredInventoryList);
 };
 
 module.exports = {
