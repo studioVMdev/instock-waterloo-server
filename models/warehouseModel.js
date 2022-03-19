@@ -31,6 +31,12 @@ class Warehouse {
     //Warehouse list updated with given data
     writeFile(warehouseJSONPath, updateWarehouseList);
   };
+
+  //TODO:J2W-14
+  // static updateWarehouseDetails = (updateSingleWarehouseDetails) => {
+  //   //Single warehouse details updated with given data
+  //   writeFile(warehouseJSONPath, updateWarehouseItemDetails);
+  // };
 }
 
 module.exports = Warehouse;

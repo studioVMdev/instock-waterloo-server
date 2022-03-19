@@ -35,6 +35,21 @@ const addWarehouse = (req, res) => {
   }
 };
 
+//TODO: J2W-14
+// const editWarehouse = (req, res) => {
+//   let warehouseDetails = isError("warehouse details", req.body);
+
+//   if (!warehouseDetails) {
+//     const warehouseId = req.params.warehouseId;
+//     let data = { warehouseId, ...req.body };
+//     let warehouse = warehouseModel.getWarehouseById(warehouseId);
+//     warehouseModel.updateWarehouseDetails(warehouse);
+//     res.status(200).json(data);
+//   } else {
+//     res.status(400).json(warehouseDetails);
+//   }
+// };
+
 //J2W-15
 const deleteWarehouse = (req, res) => {
   console.log("deleted");
@@ -76,4 +91,5 @@ module.exports = {
   getWarehouseById,
   deleteWarehouse,
   addWarehouse,
+  editWarehouse,
 };
