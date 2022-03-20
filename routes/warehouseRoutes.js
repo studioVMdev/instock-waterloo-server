@@ -15,6 +15,11 @@ router.get("/", warehouseController.getWarehousesList);
 // J2W-11Medium-
 router.get("/:warehouseId", warehouseController.getWarehouseById);
 
+// //GET("/list")
+// //TaskBack-End: API to get list of all warehouse names
+// //J2W-35Medium-
+// router.get("/list", warehouseController.getWarehouseNames);
+
 //POST("/")
 // TaskBack-End: API to POST/CREATE a New Warehouse
 // J2W-12Medium-

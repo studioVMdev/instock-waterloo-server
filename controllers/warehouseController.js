@@ -3,8 +3,25 @@ const inventoryModel = require("../models/inventoryModel");
 const { isError } = require("../utils/helpers");
 const { v4: uuidv4 } = require("uuid");
 
-const getWarehousesList = (_req, res) => {
-  return res.status(200).json(warehouseModel.getWarehousesList());
+const getWarehousesList = (req, res) => {
+  const fullWarehouseList = warehouseModel.getWarehousesList();
+  if (req.query.list) {
+    //if user wants specific data about all warehouses it can be sorted here
+    const sortWarehouse = fullWarehouseList.map((warehouse) => {
+      //this maps the data user requested for
+      if (warehouse[req.query.list]) {
+        //it only maps if the key user gives is found in the warehouse info
+        return { value: warehouse[req.query.list] };
+      } else {
+        //if key not found gives error
+        res
+          .status(404)
+          .json(`Warehouses do not have data on "${req.query.list}"`);
+      }
+    });
+    return res.status(200).json(sortWarehouse); //the result of the map returned here
+  }
+  return res.status(200).json(fullWarehouseList); //this code is only reached if user does not provide query
 };
 
 //J2W-11
@@ -16,14 +33,13 @@ const getWarehouseById = (req, res) => {
     return res.status(200).json(warehouseModel.getWarehouseById(warehouseId));
   } else {
     return res.status(404).json({
-      errorMessage: `Warehouse with ID:${warehouseId} does not exist`,
+      errorMessage: `Warehouse with ID: ${warehouseId} does not exist`,
     });
   }
 };
 
 //J2W-12
 const addWarehouse = (req, res) => {
-  console.log(req.body);
   let result = isError("warehouse", req.body);
   if (!result) {
     let data = { id: uuidv4(), ...req.body };
@@ -104,6 +120,11 @@ const deleteWarehouse = (req, res) => {
 
   return res.status(200).json(warehouse);
 };
+
+//J2W-35
+// const getWarehouseNames = () => {
+//   console.log(list);
+// };
 
 module.exports = {
   getWarehousesList,
