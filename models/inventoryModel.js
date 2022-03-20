@@ -12,7 +12,6 @@ class Inventory {
   //! TODO RESET INVENTORIES METHOD
 
   static getInventoryList = () => {
-    console.log("inventory model");
     return inventoryList;
   };
 
