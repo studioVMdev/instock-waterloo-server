@@ -11,7 +11,7 @@ const getWarehousesList = (req, res) => {
       //this maps the data user requested for
       if (warehouse[req.query.list]) {
         //it only maps if the key user gives is found in the warehouse info
-        return { value: warehouse[req.query.list] };
+        return { value: warehouse[req.query.list], warehouseID: warehouse.id };
       } else {
         //if key not found gives error
         res
