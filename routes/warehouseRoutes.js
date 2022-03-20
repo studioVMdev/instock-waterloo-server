@@ -17,7 +17,6 @@ router.get("/:warehouseId", warehouseController.getWarehouseById);
 
 //POST("/")
 // TaskBack-End: API to POST/CREATE a New Warehouse
-
 // J2W-12Medium-
 //Needs data in JSON format
 router.post("/add", warehouseController.addWarehouse);

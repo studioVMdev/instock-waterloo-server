@@ -27,7 +27,14 @@ const isError = (type, data) => {
     options = ["name", "address", "city", "country", "contact"];
     additionalInfo = ["name", "position", "phone", "email"];
   } else if (type === "inventory") {
-    options = [];
+    options = [
+      "warehouseName",
+      "itemName",
+      "description",
+      "category",
+      "status",
+      "quantity",
+    ];
   }
 
   for (i = 0; i < options.length; i++) {

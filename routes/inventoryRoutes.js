@@ -24,7 +24,8 @@ router.get(
 
 //POST("/")
 // TaskBack-End: API to POST/CREATE a New Inventory Item
-// J2W-24Medium-
+//J2W-24Medium-
+router.post("/add", inventoryController.addInventoryItem);
 
 //POST("/:iId")
 // TaskBack-End: API to PUT/PATCH/EDIT an Inventory Item

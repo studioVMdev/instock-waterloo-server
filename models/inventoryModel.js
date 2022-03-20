@@ -12,10 +12,10 @@ class Inventory {
   //! TODO RESET INVENTORIES METHOD
 
   static getInventoryList = () => {
-    console.log("inventory model");
     return inventoryList;
   };
 
+  //J2W-24
   //J2W-25
   static updateInventory = (updateInventoryList) => {
     //Inventory list updated with given data

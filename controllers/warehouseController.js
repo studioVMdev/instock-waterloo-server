@@ -23,6 +23,7 @@ const getWarehouseById = (req, res) => {
 
 //J2W-12
 const addWarehouse = (req, res) => {
+  console.log(req.body);
   let result = isError("warehouse", req.body);
   if (!result) {
     let data = { id: uuidv4(), ...req.body };

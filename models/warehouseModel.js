@@ -12,7 +12,6 @@ class Warehouse {
   //! TODO RESET INVENTORIES METHOD
 
   static getWarehousesList = () => {
-    console.log("warehouse model");
     return warehouseList;
   };
 

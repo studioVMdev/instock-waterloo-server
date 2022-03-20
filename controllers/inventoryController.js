@@ -39,6 +39,21 @@ const getInventoryByWarehouse = (req, res) => {
   res.status(200).json(filteredInventoryList);
 };
 
+//J2W-24
+const addInventoryItem = (req, res) => {
+  let result = isError("inventory", req.body);
+
+  if (!result) {
+    let data = { id: uuidv4(), ...req.body };
+    let inventoryList = inventoryModel.getInventoryList();
+    inventoryList.splice(0, 0, data);
+    inventoryModel.updateInventory(inventoryList);
+    res.status(200).json(data);
+  } else {
+    res.status(400).json(result);
+  }
+};
+
 //J2W-25
 const editInventoryItem = (req, res) => {
   // console.log(req.body);
@@ -99,4 +114,5 @@ module.exports = {
   getInventoryByWarehouse,
   editInventoryItem,
   deleteInventory,
+  addInventoryItem,
 };
