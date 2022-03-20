@@ -5,18 +5,18 @@ const { v4: uuidv4 } = require("uuid");
 
 const getWarehousesList = (req, res) => {
   const fullWarehouseList = warehouseModel.getWarehousesList();
-  if (req.query.data) {
+  if (req.query.list) {
     //if user wants specific data about all warehouses it can be sorted here
     const sortWarehouse = fullWarehouseList.map((warehouse) => {
       //this maps the data user requested for
-      if (warehouse[req.query.data]) {
+      if (warehouse[req.query.list]) {
         //it only maps if the key user gives is found in the warehouse info
-        return { value: warehouse[req.query.data] };
+        return { value: warehouse[req.query.list] };
       } else {
         //if key not found gives error
         res
           .status(404)
-          .json(`Warehouses do not have data on "${req.query.data}"`);
+          .json(`Warehouses do not have data on "${req.query.list}"`);
       }
     });
     return res.status(200).json(sortWarehouse); //the result of the map returned here
