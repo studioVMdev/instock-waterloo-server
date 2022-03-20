@@ -9,6 +9,9 @@ const warehouseController = require("../controllers/warehouseController");
 // TaskBack-End: API to GET List of All Warehouses
 // J2W-10Medium-
 router.get("/", warehouseController.getWarehousesList);
+//GET("/list")
+//TaskBack-End: API to get list of warehouse names
+//J2W-35Medium-
 
 //GET("/:wId")
 // TaskBack-End: API to GET a Single Warehouse
