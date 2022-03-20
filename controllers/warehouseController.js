@@ -8,17 +8,20 @@ const getWarehousesList = (req, res) => {
   if (req.query.data) {
     //if user wants specific data about all warehouses it can be sorted here
     const sortWarehouse = fullWarehouseList.map((warehouse) => {
+      //this maps the data user requested for
       if (warehouse[req.query.data]) {
+        //it only maps if the key user gives is found in the warehouse info
         return { value: warehouse[req.query.data] };
       } else {
+        //if key not found gives error
         res
           .status(404)
           .json(`Warehouses do not have data on "${req.query.data}"`);
       }
     });
-    return res.status(200).json(sortWarehouse);
+    return res.status(200).json(sortWarehouse); //the result of the map returned here
   }
-  return res.status(200).json(fullWarehouseList);
+  return res.status(200).json(fullWarehouseList); //this code is only reached if user does not provide query
 };
 
 //J2W-11
