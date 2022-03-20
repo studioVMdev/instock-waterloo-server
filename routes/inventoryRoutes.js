@@ -29,7 +29,8 @@ router.post("/add", inventoryController.addInventoryItem);
 
 //POST("/:iId")
 // TaskBack-End: API to PUT/PATCH/EDIT an Inventory Item
-// J2W-25Medium
+//J2W-25Medium
+router.put("/:inventoryId", inventoryController.editInventoryItem);
 
 //DELETE("/:iId")
 // TaskBack-End: API to DELETE an Inventory Item
