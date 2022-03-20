@@ -1,4 +1,5 @@
 const inventoryModel = require("../models/inventoryModel");
+const { isError } = require("../utils/helpers");
 const { v4: uuidv4 } = require("uuid");
 
 const getInventoryList = (_req, res) => {
@@ -38,6 +39,39 @@ const getInventoryByWarehouse = (req, res) => {
   res.status(200).json(filteredInventoryList);
 };
 
+//J2W-25
+const editInventoryItem = (req, res) => {
+  // console.log(req.body);
+  let result = isError("inventory", req.body);
+
+  if (!result) {
+    const inventoryId = req.params.inventoryId;
+    // console.log(inventoryId);
+    let inventoryList = inventoryModel.getInventoryList();
+    // console.log(inventoryList);
+
+    inventoryList = inventoryList.map((inventory) => {
+      if (inventory.id === inventoryId) {
+        console.log("found", inventory);
+        inventory = { id: inventory.id, ...req.body };
+        console.log(inventory);
+        return inventory;
+      }
+      return inventory;
+    });
+
+    let inventoryToEdit = inventoryList.find(
+      (inventory) => inventory.id === inventoryId
+    );
+
+    inventoryModel.updateInventory(inventoryList);
+
+    res.status(200).json(inventoryToEdit);
+  } else {
+    res.status(400).json(result);
+  }
+};
+
 //J2W-26
 const deleteInventory = (req, res) => {
   const inventoryId = req.params.inventoryId;
@@ -63,5 +97,6 @@ module.exports = {
   getInventoryList,
   getInventoryById,
   getInventoryByWarehouse,
+  editInventoryItem,
   deleteInventory,
 };
