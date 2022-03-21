@@ -3,8 +3,7 @@ const { readFile, writeFile } = require("../utils/helpers");
 const path = require("path");
 
 const warehouseJSONPath = path.join(__dirname, "../data/warehouses.json");
-const warehouseList = readFile(warehouseJSONPath);
-
+// const warehouseList = readFile(warehouseJSONPath);
 class Warehouse {
   constructor() {}
 
@@ -12,15 +11,18 @@ class Warehouse {
   //! TODO RESET INVENTORIES METHOD
 
   static getWarehousesList = () => {
+    const warehouseList = readFile(warehouseJSONPath);
     return warehouseList;
   };
 
   //J2W-11
   static findById = (warehouseId) => {
+    const warehouseList = readFile(warehouseJSONPath);
     return warehouseList.some((warehouse) => warehouse.id === warehouseId);
   };
   //J2W-11
   static getWarehouseById = (warehouseId) => {
+    const warehouseList = readFile(warehouseJSONPath);
     return warehouseList.find((warehouse) => warehouse.id === warehouseId);
   };
 

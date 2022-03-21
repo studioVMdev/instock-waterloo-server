@@ -3,8 +3,7 @@ const { readFile, writeFile } = require("../utils/helpers");
 const path = require("path");
 
 const inventoryJSONPath = path.join(__dirname, "../data/inventories.json");
-const inventoryList = readFile(inventoryJSONPath);
-
+// const inventoryList = readFile(inventoryJSONPath);
 class Inventory {
   constructor() {}
 
@@ -12,6 +11,7 @@ class Inventory {
   //! TODO RESET INVENTORIES METHOD
 
   static getInventoryList = () => {
+    const inventoryList = readFile(inventoryJSONPath);
     return inventoryList;
   };
 
@@ -24,10 +24,12 @@ class Inventory {
 
   //J2W-22
   static findById = (inventoryId) => {
+    const inventoryList = readFile(inventoryJSONPath);
     return inventoryList.some((inventory) => inventory.id === inventoryId);
   };
   //J2W-22
   static getInventoryById = (inventoryId) => {
+    const inventoryList = readFile(inventoryJSONPath);
     return inventoryList.find((inventory) => inventory.id === inventoryId);
   };
 }
