@@ -3,7 +3,7 @@ const { readFile, writeFile } = require("../utils/helpers");
 const path = require("path");
 
 const inventoryJSONPath = path.join(__dirname, "../data/inventories.json");
-
+// const inventoryList = readFile(inventoryJSONPath);
 class Inventory {
   constructor() {}
 

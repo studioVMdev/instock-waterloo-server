@@ -3,7 +3,7 @@ const { readFile, writeFile } = require("../utils/helpers");
 const path = require("path");
 
 const warehouseJSONPath = path.join(__dirname, "../data/warehouses.json");
-
+// const warehouseList = readFile(warehouseJSONPath);
 class Warehouse {
   constructor() {}
 
